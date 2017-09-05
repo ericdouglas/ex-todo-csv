@@ -7,6 +7,24 @@ defmodule TodoList do
   @path_env %{dev: ["lib", "todos.csv"], test: ["lib", "todos_test.csv"]}
   @path Path.join(@path_env[Mix.env])
 
+  @doc """
+  Read the .csv file and return its content formatted
+
+  ## Examples
+
+      iex> TodoList.init
+      %TodoList{
+        last_id: 1,
+        todos: %{
+          1 => %Todo{
+            id: 1,
+            task: "Study Erlang",
+            date: "2018-01-01",
+            status: "todo"
+          }
+        }
+      }
+  """
   def init do
     @path
     |> read_file!
